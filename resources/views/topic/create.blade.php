@@ -25,6 +25,5 @@
         {!! Form::text('topicnameform', '', ['class'=>'form-control', 'placeholder'=>'Enter topic name']) !!}
     </div>
     <button type="submit" class="btn btn-primary">Add topic</button>
-    <button type="submit" class="btn btn-primary">Add category</button>
     {!! Form::close() !!}
 @endsection

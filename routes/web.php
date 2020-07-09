@@ -18,3 +18,4 @@ Route::get('/', function () {
 // маршрутизация для RESTful контроллера: одна инструкция
 // имя для маршрутизации, имя контроллера
 ROUTE::resource('topic', 'TopicController');
+ROUTE::resource('block', 'BlockController');

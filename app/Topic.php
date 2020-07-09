@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model; //ORM для работы с СУБД
-use \Esensi\Model\Model; // модуль валидации данных в таблицах
+//use \Esensi\Model\Model; // модуль валидации данных в таблицах
 
 //форма валидации данных
 

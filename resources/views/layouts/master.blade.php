@@ -13,11 +13,11 @@
                 <nav class="mainmenu col-12">
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
-                            <a href="{{url('index')}}" class="nav-link {{$page === 'Main page' ? 'active' : ''}}">
+                            <a href="{{url('topic/create')}}" class="nav-link {{$page === 'Main page' ? 'active' : ''}}">
                                 Main page</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('create')}}" class="nav-link {{$page === 'Forms' ? 'active' : ''}}">
+                            <a href="{{url('block/create')}}" class="nav-link {{$page === 'Forms' ? 'active' : ''}}">
                                 Content control</a>
                         </li>
                     </ul>
