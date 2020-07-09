@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Topic;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -13,7 +14,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
+        return "<h1>I'm from TopicController@index</h1>";
     }
 
     /**
@@ -23,18 +24,29 @@ class TopicController extends Controller
      */
     public function create()
     {
-        return view('topic.create', ['page'=>'Main page']);
+        $topic = new Topic;
+        return view('topic.create', ['page'=>'Main page', 'topic'=>$topic]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage. Взаимодесйтвует с МОДЕЛЬЮ
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $topic = new Topic;
+        $topic->topicname = $request->topicnameform; // значение из формы переданы в модель
+
+        //если данные не удалось передать
+        if(!$topic->save()) {
+            $err = $topic->getErrors();
+            //после этого - возвращение на страницу и сообщение об ошибке
+            return redirect()->action('TopicController@store')->with('errors', $err)->withInput();
+            // withInput метод проверяет нет ли ошибочных полей в форме и при редиректе корректные данные он сохранит
+        }
+        return redirect()->action('TopicController@store')->with('message', 'New topic'. $topic->topicname . 'has been added with id=' . $topic->id);
     }
 
     /**

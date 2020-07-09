@@ -8,21 +8,27 @@
 </head>
 <body>
     @section('menu')
-    <div class="mainmenu col-12">
-    <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos quas qui accusamus quo soluta beatae voluptates neque reprehenderit, optio odit? Rerum architecto animi illum laborum omnis nemo, voluptates quidem officia.</h1>
-        <ul class="nav nav-justified">
-            <li {{$page === 'Main page' ? 'class=active' : ''}}>
-                <a href="{{url('index')}}">Main page</a>
-            </li>
-            <li {{$page === 'Forms' ? 'class=active' : ''}}>
-            <a href="{{url('create')}}">Content control</a>
-            </li>
-        </ul>
-    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="mainmenu col-12">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a href="{{url('index')}}" class="nav-link {{$page === 'Main page' ? 'active' : ''}}">
+                                Main page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('create')}}" class="nav-link {{$page === 'Forms' ? 'active' : ''}}">
+                                Content control</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     @show
     <div class="col-12">
         @yield('content')
     </div>
+
 
    
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
