@@ -1,8 +1,9 @@
 <?php
 
+use App\Block;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class BlockSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(TopicSeeder::class);
-        $this->call(BlockSeeder::class);
+        factory(Block::class, 10)->create();
     }
 }

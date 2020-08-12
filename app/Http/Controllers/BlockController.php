@@ -79,7 +79,7 @@ class BlockController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('block.edit', ['page'=>'Main page']);
     }
 
     /**
@@ -102,7 +102,9 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $block = Block::find($id);
+        $block->delete();
+        return redirect('topic');
     }
 }
 

@@ -16,9 +16,7 @@
         {{session('message')}}
     </div>
 @endif
-
-
-    <h1 class="label label-info">{{$page}}</h1>
+    <h1 class="label label-info">{{ $page }}</h1>
     {!! Form::model($block, ['action'=>'BlockController@store', 'method'=>'post', 'files'=>true, 'class'=>'form']) !!}
     <div class='form-group row'>
         {!! Form::label('topicid', 'Select topic', ['class'=>'col-md-2']) !!}

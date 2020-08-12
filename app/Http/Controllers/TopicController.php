@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Topic;
+use App\Block;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -12,10 +13,12 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /* метод для выводы текста на экран (view) когда происходит переход по пути, указанному в файле web.php*/
     public function index()
     {
         $topics = Topic::all();
-        return view('topic.index', ['page'=>'home', 'topics'=>$topics]);
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'id'=>0]);
+        //topic - папка, index - название файла view
     }
 
     /**
@@ -58,7 +61,10 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+        $blocks = Block::where('topicid', '=', $id)->get();
+        $topics = Topic::all();
+
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$id]);
     }
 
     /**
@@ -92,6 +98,6 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

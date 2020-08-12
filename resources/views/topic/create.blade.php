@@ -7,13 +7,13 @@
 @if(session('errors'))
     <div class="alert alert-danger">
         @foreach(session('errors') -> all() as $error)
-            {{$error}}<br>
+            {{ $error }}<br>
         @endforeach
     </div>
 @endif
 @if(session('message'))
     <div class="alert alert-success">
-        {{session('message')}}
+        {{ session('message') }}
     </div>
 @endif
 

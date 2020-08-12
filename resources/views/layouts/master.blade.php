@@ -11,9 +11,9 @@
         <div class="container-fluid">
             <div class="row">
                 <nav class="mainmenu col-12">
-                    <ul class="nav nav-pills nav-fill">
+                    <ul class="nav nav-pills nav-fill mb-2">
                         <li class="nav-item">
-                            <a href="{{url('topic/create')}}" class="nav-link {{$page === 'Main page' ? 'active' : ''}}">
+                            <a href="{{url('topic')}}" class="nav-link {{$page === 'Main page' ? 'active' : ''}}">
                                 Main page</a>
                         </li>
                         <li class="nav-item">
