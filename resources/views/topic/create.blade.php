@@ -27,3 +27,7 @@
     <button type="submit" class="btn btn-primary">Add topic</button>
     {!! Form::close() !!}
 @endsection
+
+@section('footer')
+    @parent
+@endsection

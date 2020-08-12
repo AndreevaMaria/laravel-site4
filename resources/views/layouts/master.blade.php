@@ -28,7 +28,9 @@
     <div class="col-12">
         @yield('content')
     </div>
-
+    @section('footer')
+    <div class="footer bg-light text-center my-5">	&copy; Summer 2020</div>
+    @show
 
    
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"

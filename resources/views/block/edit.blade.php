@@ -8,3 +8,7 @@
 <h1>Edit form</h1>
 
 @endsection
+
+@section('footer')
+    @parent
+@endsection
