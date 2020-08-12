@@ -5,17 +5,17 @@
 @endsection
 
 @section('content')
-    <div class="row container">
+    <div class="row mr-2">
         <div class="col-3">
             <ul class="list-unstyled d-block">
                 @foreach($topics as $topic)
-                <li class="btn btn-dark w-100 text-left my-1 p-2">
-                    <a class="text-decoration-none text-white" href="{{url('topic/'.$topic->id)}}">{{$topic->topicname}}</a>
+                <li class="">
+                    <a class="btn btn-dark w-100 text-left my-1 p-2 text-decoration-none text-white" href="{{url('topic/'.$topic->id)}}">{{$topic->topicname}}</a>
                 </li>
                 @endforeach
             </ul>
         </div>
-        <div class="col-9 bg-info">
+        <div class="col-9 bg-info position-relative pt-2 px-3 shadow rounded" style="height: 75vh; overflow-y: scroll;">
             @if($id != 0)
             <h3>{{$topic->topicname}}</h3>
                 @foreach($blocks as $block)

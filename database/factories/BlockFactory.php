@@ -19,7 +19,7 @@ $factory->define(App\Block::class, function (Faker $faker) {
     return [
         'topicid' => \App\Topic::all()->random()->id,
         'title' => $faker->catchPhrase,
-        'content' => $faker->text(100),
+        'content' => $faker->text(3000),
         'imagepath' => $faker->imageUrl($width = 640, $height = 480),
     ];
 });
