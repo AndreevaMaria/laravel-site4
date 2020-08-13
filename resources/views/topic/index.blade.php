@@ -10,19 +10,19 @@
             <ul class="list-unstyled d-block">
                 @foreach($topics as $topic)
                 <li class="">
-                    <a class="btn btn-dark w-100 text-left my-1 p-2 text-decoration-none text-white" href="{{url('topic/'.$topic->id)}}">{{$topic->topicname}}</a>
+                    <a class="btn btn-secondary w-100 text-left my-1 p-2 text-decoration-none text-white" href="{{url('topic/'.$topic->id)}}">{{$topic->topicname}}</a>
                 </li>
                 @endforeach
             </ul>
         </div>
-        <div class="col-9 bg-info position-relative pt-2 px-3 shadow rounded" style="height: 75vh; overflow-y: scroll;">
+        <div class="col-9 bg-light position-relative pt-4 shadow rounded" style="height: 75vh; overflow-y: scroll;">
             @if($id != 0)
-            <h3>{{$topic->topicname}}</h3>
+            <h3 class="ml-3 mb-2">{{$topic->topicname}}</h3>
                 @foreach($blocks as $block)
                     <div>
                         <div>
-                            <h5 class-"my-2">{{ $block -> title }}</h5>
-                            <div class="media">
+                            <h5 class="ml-3">{{ $block -> title }}</h5>
+                            <div class="media mt-2 pl-3">
                                 @if ($block -> imagepath !== '')
                                     <img src="{{asset($block->imagepath)}}" style="height:150px" alt="" class="d-flex mr-2 mb-2">
                                 @endif

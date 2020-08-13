@@ -79,7 +79,9 @@ class BlockController extends Controller
      */
     public function edit($id)
     {
-        return view('block.edit', ['page'=>'Main page']);
+        $block = Block::find($id);
+        $topics = Topic::pluck('topicname', 'id');
+        return view('block.edit', ['page'=>'Main page', 'block'=>$block, 'topics'=>$topics]);
     }
 
     /**
@@ -91,7 +93,7 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
