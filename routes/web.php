@@ -25,8 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('//', 'TopicController@index');
-
+Route::get('topic/search', 'TopicController@search');
+Route::get('block/search', 'BlockController@search');
 
 //Route::get('/home/', 'TestController@index');
 //по адресу /home/ вызывать TestController, метод index - view, который в нем прописан
@@ -35,3 +35,6 @@ Route::get('//', 'TopicController@index');
 // имя для маршрутизации (попадет в адресную строку - перед), имя контроллера
 ROUTE::resource('topic', 'TopicController');
 ROUTE::resource('block', 'BlockController');
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index');

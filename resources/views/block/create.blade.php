@@ -1,8 +1,5 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('menu')
-    @parent
-@endsection
 @section('content')
 @if(session('errors'))
     <div class="alert alert-danger">
@@ -16,7 +13,7 @@
         {{session('message')}}
     </div>
 @endif
-    <h1 class="label label-info">{{ $page }}</h1>
+    <h4 class="label label-info">{{ $page }}</h4>
     {!! Form::model($block, ['action'=>'BlockController@store', 'method'=>'post', 'files'=>true, 'class'=>'form']) !!}
     <div class='form-group row'>
         {!! Form::label('topicid', 'Select topic', ['class'=>'col-md-2']) !!}

@@ -29,7 +29,7 @@
         @yield('content')
     </div>
     @section('footer')
-    <div class="footer bg-light text-center my-5">	&copy; Summer 2020</div>
+    <div class="footer bg-light text-center my-3">	&copy; Summer 2020</div>
     @show
 
    

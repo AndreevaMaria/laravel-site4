@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Topic;
 use App\Block;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller
 {
@@ -28,8 +29,11 @@ class TopicController extends Controller
      */
     public function create()
     {
+        if(!Auth::check()) {
+            return redirect('login');
+        }
         $topic = new Topic;
-        return view('topic.create', ['page'=>'Main page', 'topic'=>$topic]);
+        return view('topic.create', ['page'=>'Topics', 'topic'=>$topic]);
     }
 
     /**
@@ -63,8 +67,9 @@ class TopicController extends Controller
     {
         $blocks = Block::where('topicid', '=', $id)->get();
         $topics = Topic::all();
+        $topicname = Topic::find($id)->topicname;
 
-        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$id]);
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$id, 'topicname'=>$topicname]);
     }
 
     /**
@@ -99,5 +104,13 @@ class TopicController extends Controller
     public function destroy($id)
     {
         
+    }
+
+    public function search(Request $request) {
+        $search = $request->searchform;
+        $search = '%'.$search.'%';
+        $topics = Topic::where('topicname', 'like', $search)->get();
+
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'id'=>0, 'topicname'=>'']);
     }
 }

@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container">
-    <h3 class="my-3">Edit the block</h3>
+    <h4 class="my-3">Edit the block</h4>
     {!! Form::model($block, ['route'=>['block.update', $block->id], 'method'=>'PUT', 'files'=>true]) !!}
         <div class="form-group">
             {!! Form::label('topicid', 'Select Topic') !!}

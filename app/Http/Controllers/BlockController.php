@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Block;
 use App\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlockController extends Controller
 {
@@ -25,6 +26,9 @@ class BlockController extends Controller
      */
     public function create()
     {
+        if(!Auth::check()) {
+            return redirect('login');
+        }
         $block = new Block;
         $topics = Topic::pluck('topicname', 'id');
         return view('block.create', ['block'=>$block, 'page'=>'Forms', 'topics'=>$topics]);
@@ -93,7 +97,18 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $block = Block::find($id);
+        $block->topicid = $request->topicid;
+        $block->title = $request->title;
+        $block->content = $request->content;
+        $fname = $request->file('imagepath');
+        if($fname !== null) {
+            $original_name = $request->file('imagepath')->getClientOriginalName();
+            $request->file('imagepath')->move(public_path().'/images', $original_name);
+            $block->imagepath = 'images/'.$original_name;
+        }
+        $block->save();
+        return redirect('topic/'.$block->topicid);
     }
 
     /**
@@ -108,5 +123,20 @@ class BlockController extends Controller
         $block->delete();
         return redirect('topic');
     }
-}
 
+    public function search(Request $request) {
+        $search = $request->searchform;
+        $search = '%'.$search.'%';
+        $blocks = Block::where('title', 'like', $search)->orwhere('content', 'like', $search)->get();
+        if (collect($blocks)->isEmpty()) {
+            return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'id'=>0, 'topicname'=>'']);
+        } else {
+            $topics = array();
+            foreach($blocks as $block) {
+                $topic = Topic::pluck('topicname', 'id')->where('id', '=', $block->topicid);
+                array_push($topics, $topic);
+            }
+            return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$topics->id, 'topicname'=>$topics->topicname]);
+        }
+    }
+}

@@ -1,8 +1,4 @@
-@extends('layouts.master')
-
-@section('menu')
-    @parent
-@endsection
+@extends('layouts.app')
 
 @if(session('errors'))
     <div class="alert alert-danger">
@@ -18,7 +14,7 @@
 @endif
 
 @section('content')
-    <h1 class="label label-info">{{$page}}</h1>
+    <h4 class="label label-info">{{$page}}</h4>
     {!! Form::model($topic, ['action'=>'TopicController@store', 'method'=>'post']) !!}
     <div class='form-group'>
         {!! Form::label('topicnameform', 'Topic Name') !!}
