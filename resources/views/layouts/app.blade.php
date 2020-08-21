@@ -39,15 +39,16 @@
 {{ $page = null }}
                 <div class="collapse navbar-collapse d-flex justify-content-between" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto nav-pills nav-fill mb-2 mt-2 mt-lg-0 flex-grow-1">
+                    <ul class="navbar-nav mr-auto nav-pills nav-fill mb-2 mt-2 mt-lg-0">
                         <li class="nav-item active">
                             <a href="{{url('topic')}}" class="nav-link {{$page === 'Main page' ? 'active' : ''}}">
                                 Main page</a>
                         </li>
-                        @auth
-                            @if(Auth::user()->isAdmin())
-                            <!-- Это видит только админ -->
-    
+                    </ul>
+                    @auth
+                        @if(Auth::user()->isAdmin())
+                        <!-- Это видит только админ -->
+                    <ul class="list-unstyled list-inline">
                         <li class="nav-item">
                             <a href="{{url('block/create')}}" class="nav-link {{$page === 'Forms' ? 'active' : ''}}">
                                 Content control</a>
@@ -56,10 +57,10 @@
                             <a href="{{url('topic/create')}}" class="nav-link {{$page === 'Topics' ? 'active' : ''}}">
                                 Topic Control</a>
                         </li>
-                        
-                            @endif
-                        @endauth
                     </ul>
+                        @endif
+                    @endauth
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="list-unstyled list-inline">

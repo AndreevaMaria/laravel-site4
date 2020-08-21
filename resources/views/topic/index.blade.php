@@ -50,8 +50,9 @@
                                 <div class="media-body lead">{{ $block->content }}</div>
                             </div>
                             @auth
-                                @if(Auth::user()->isAdmin())
+                                @if(Auth::user()->isAdmin()) 
                                 <!-- Это видит только админ -->
+                                
                                 <div class="row">
                                     <div class="d-inline-flex col-12 justify-content-end my-1">
                                         {!! Form::open(['route'=>['block.destroy', $block->id]]) !!}
