@@ -28,8 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token', 'is_admin',
     ];
     
-    public function isAdmin()
+    static function isAdmin()
     {
-        return $this->is_admin;
+        if ($this->is_admin == '1') {
+            return true;
+       }
+       return false;
     }
 }

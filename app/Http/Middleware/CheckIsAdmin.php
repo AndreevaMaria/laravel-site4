@@ -16,16 +16,27 @@ class CheckIsAdmin
     public function handle($request, Closure $next)
     {
 
-        $user = $request->user();
-
-        if (!isset($user)) {
-            return redirect('login');
+        if(Auth::check())
+        {
+            if($request->user()->'is_admin' == "1")
+            {
+               return $next($request);
+            }
+             return redirect('/');    
         }
 
-        if (!$user->isAdmin()) {
-            return redirect('topic');
-        }
-
-        return $next($request);
+        return redirect('/login');
+    }
     }
 }
+/*
+if (auth()->check()){
+
+    if (\CheckIsAdmin::isAdmin()){
+
+        return $next($request);
+
+    }
+}
+
+return abort(404);

@@ -45,8 +45,7 @@
                                 Main page</a>
                         </li>
                     </ul>
-                    @auth
-                        @if(Auth::user()->isAdmin())
+                    @if(Auth::user()->isAdmin() == 1)
                         <!-- Это видит только админ -->
                     <ul class="list-unstyled list-inline">
                         <li class="nav-item">
@@ -58,8 +57,7 @@
                                 Topic Control</a>
                         </li>
                     </ul>
-                        @endif
-                    @endauth
+                    @endif
                     
 
                     <!-- Right Side Of Navbar -->
