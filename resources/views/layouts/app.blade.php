@@ -47,7 +47,7 @@
                     </ul>
                     @if(Auth::check() && Auth::user()->is_admin == true) 
                         <!-- Это видит только админ -->
-                    <ul class="list-unstyled list-inline">
+                    <ul class="list-unstyled list-inline d-inline-flex justify-content-end">
                         <li class="nav-item">
                             <a href="{{url('block/create')}}" class="nav-link {{$page === 'Forms' ? 'active' : ''}}">
                                 Content control</a>
