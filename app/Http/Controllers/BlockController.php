@@ -129,6 +129,9 @@ class BlockController extends Controller
         $search = '%'.$search.'%';
         $blocks = Block::where('title', 'like', $search)->get();
         $topics = Topic::all();
-        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>0, 'topicname'=>'']);
+        foreach($blocks as $block) {
+            $id = $block->id;
+            return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$id, 'topicname'=>'']);
+        }
     }
 }
