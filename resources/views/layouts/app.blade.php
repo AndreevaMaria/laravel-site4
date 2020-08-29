@@ -45,7 +45,7 @@
                                 Main page</a>
                         </li>
                     </ul>
-                    @if(Auth::user()->isAdmin() == 1)
+                    @if(Auth::check() && Auth::user()->is_admin == true) 
                         <!-- Это видит только админ -->
                     <ul class="list-unstyled list-inline">
                         <li class="nav-item">

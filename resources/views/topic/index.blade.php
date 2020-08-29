@@ -7,7 +7,7 @@
                 <!-- форма поиска по топикам -->
                 {!! Form::open(['action'=>'TopicController@search', 'class'=>'form', 'method'=>'get']) !!}
                 <div class="input-group d-block">
-                    {!! Form::text('searchform', '', ['class'=>'form-controll', 'placeholder'=>'Enter topic']) !!}
+                    {!! Form::text('searchformTopic', '', ['class'=>'form-controll', 'placeholder'=>'Enter topic']) !!}
                     <button type="submit" class="btn btn-success shadow rounded">Search</button>
                     {!! Form::close() !!}
                 </div>
@@ -18,7 +18,7 @@
                 <!-- форма поиска по блокам -->
                 {!! Form::open(['action'=>'BlockController@search', 'class'=>'form', 'method'=>'get']) !!}
                 <div class="input-group d-block">
-                    {!! Form::text('searchform', '', ['class'=>'form-controll', 'placeholder'=>'Enter requered']) !!}
+                    {!! Form::text('searchformBlock', '', ['class'=>'form-controll', 'placeholder'=>'Enter requered']) !!}
                     <button type="submit" class="btn btn-success shadow rounded">Search</button>
                     {!! Form::close() !!}
                 </div>
@@ -49,10 +49,9 @@
                                 @endif
                                 <div class="media-body lead">{{ $block->content }}</div>
                             </div>
-                            @auth
-                                @if(Auth::user()->isAdmin()) 
+
+                                @if(Auth::check() && Auth::user()->is_admin == true) 
                                 <!-- Это видит только админ -->
-                                
                                 <div class="row">
                                     <div class="d-inline-flex col-12 justify-content-end my-1">
                                         {!! Form::open(['route'=>['block.destroy', $block->id]]) !!}
@@ -62,9 +61,9 @@
 
                                         <a href="{{ url('block/'.$block->id.'/edit') }}" class="btn btn-success shadow rounded ml-2">Update</a>
                                     </div>
+                                </div>
                                 @endif
-                            @endauth
-                            </div>
+                            
                             <hr class="my-4">
                         </div>
                     </div>

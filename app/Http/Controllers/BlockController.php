@@ -125,13 +125,10 @@ class BlockController extends Controller
     }
 
     public function search(Request $request) {
-        $search = $request->searchform;
+        $search = $request->searchformBlock;
         $search = '%'.$search.'%';
         $blocks = Block::where('title', 'like', $search)->get();
-        if (collect($blocks)->isEmpty()) {
-            return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'id'=>0, 'topicname'=>''])->with('message', 'No match found');
-        } else {
-            return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>0, 'topicname'=>'']);
-        }
+        $topics = Topic::all();
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>0, 'topicname'=>'']);
     }
 }

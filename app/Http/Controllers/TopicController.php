@@ -107,7 +107,7 @@ class TopicController extends Controller
     }
 
     public function search(Request $request) {
-        $search = $request->searchform;
+        $search = $request->searchformTopic;
         $search = '%'.$search.'%';
         $topics = Topic::where('topicname', 'like', $search)->get();
 
